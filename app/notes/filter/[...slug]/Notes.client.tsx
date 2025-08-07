@@ -14,10 +14,12 @@ import { FetchNoteList } from '@/types/note';
 
 type NotesClientProps = {
   initialData: FetchNoteList;
-  tags?: string[];
+  initialTag?: string;
 };
 
-export default function NotesClient({ initialData }: NotesClientProps) {
+
+
+export default function NotesClient({ initialData, initialTag }: NotesClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [inputValue, setInputValue] = useState('');
@@ -31,14 +33,13 @@ export default function NotesClient({ initialData }: NotesClientProps) {
   const handleSearchChange = (value: string) => {
     setInputValue(value);
     debouncedSearch(value);
-    
   };
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['notes', currentPage, debouncedValue],
-    queryFn: () => fetchNotes(currentPage, debouncedValue),
+    queryKey: ['notes', currentPage, debouncedValue, initialTag],
+    queryFn: () => fetchNotes(currentPage, debouncedValue, initialTag),
     placeholderData: keepPreviousData,
-    initialData
+    initialData,
   });
 
   const totalPages = data?.totalPages ?? 0;
