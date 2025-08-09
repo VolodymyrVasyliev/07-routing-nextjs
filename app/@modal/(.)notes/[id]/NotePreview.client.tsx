@@ -8,13 +8,12 @@ import css from './NotePreview.module.css';
 const NotePreview = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data, isError, isLoading } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ['notes', id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
 
-  if (isLoading) return <p>Loading, please wait...</p>;
   if (isError || !data) return <p>Something went wrong.</p>;
 
   return (
