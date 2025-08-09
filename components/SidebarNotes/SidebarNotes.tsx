@@ -1,10 +1,12 @@
-import { getTags } from "@/lib/api";
+// import { getTags } from "@/lib/api";
 import css from "./SidebarNotes.module.css"
 import Link from "next/link";
 
 
 const SidebarNotes = async() => {
-    const tags = await getTags()
+  // const tags = await getTags()
+  const tags = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+  
     return (
       <ul className={css.menuList}>
         <Link href="/notes/filter/all" className={css.menuLink}>

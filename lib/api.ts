@@ -34,9 +34,9 @@ export const fetchNotes = async (page: number, search: string, tag?: string): Pr
   return response.data;
 };
 
-export const getTags = async (): Promise<NoteTag[]> => {
-  return ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
-};
+// export const getTags = async (): Promise<NoteTag[]> => {
+//   return ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+// };
 
 
 export const fetchNoteById = async (id: string): Promise<Note> => {
