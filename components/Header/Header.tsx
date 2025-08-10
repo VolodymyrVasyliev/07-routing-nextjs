@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import css from './Header.module.css';
-import TaggMenu from '../TagsMenu/TagsMenu';
+import TagsMenu from '../TagsMenu/TagsMenu';
 
 const Header = async () => {
 const tags = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
@@ -16,7 +16,7 @@ const tags = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
             <Link href="/">Home</Link>
           </li>
           <li>
-            <TaggMenu tags={tags} />
+            <TagsMenu tags={tags} />
           </li>
         </ul>
       </nav>

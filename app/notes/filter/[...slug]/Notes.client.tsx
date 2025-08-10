@@ -17,8 +17,6 @@ type NotesClientProps = {
   initialTag?: string;
 };
 
-
-
 export default function NotesClient({ initialData, initialTag }: NotesClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,7 +50,7 @@ export default function NotesClient({ initialData, initialTag }: NotesClientProp
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+            onPageChange={(page: number) => setCurrentPage(page)}
             totalPages={totalPages}
           />
         )}
@@ -67,7 +65,7 @@ export default function NotesClient({ initialData, initialTag }: NotesClientProp
       {data && !isLoading && <NoteList notes={data.notes} />}
 
       {isModalOpen && (
-        <Modal>
+        <Modal onClose={() => setIsModalOpen(false)}>
           <NoteForm onCloseModal={() => setIsModalOpen(false)} />
         </Modal>
       )}
